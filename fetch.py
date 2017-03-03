@@ -6,46 +6,7 @@ import uvloop
 import aiohttp
 import async_timeout
 
-
-websites = [
-    {
-        'domain': 'google.co.uk',
-        'scheme': 'http',
-        'prefix': 'www',
-        'suffix': ''
-    },
-    {
-        'domain': 'bing.co.uk',
-        'scheme': 'http',
-        'prefix': 'www',
-        'suffix': ''
-    },
-    {
-        'domain': 'yahoo.com',
-        'scheme': 'https',
-        'prefix': 'uk',
-        'suffix': ''
-    },
-    {
-        'domain': 'bbc.co.uk',
-        'scheme': 'http',
-        'prefix': 'www',
-        'suffix': ''
-    },
-    {
-        'domain': 'sky.com',
-        'scheme': 'https',
-        'prefix': 'www',
-        'suffix': ''
-    },
-    {
-        'domain': 'richardnpaul.co.uk',
-        'scheme': 'https',
-        'prefix': 'www',
-        'suffix': 'foo'
-    }
-]
-
+from websites import website_list
 
 async def fetch(w, session):
     with async_timeout.timeout(10):
@@ -81,6 +42,6 @@ async def fetch_websites(websites):
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 loop = asyncio.get_event_loop()
-future = asyncio.ensure_future(fetch_websites(websites))
+future = asyncio.ensure_future(fetch_websites(website_list))
 loop.run_until_complete(future)
 
