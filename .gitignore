@@ -173,6 +173,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 .env3/
-.gitignore
 .idea/
 fetch_urls.py
